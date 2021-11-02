@@ -20,20 +20,20 @@
         <p v-if="product.endurance">
           使用寿命: {{ calc_bytes(product.endurance, {fixed: 0}) }}W
         </p>
+        <v-chip-group
+          column
+        >
+          <v-chip v-if="product.flash" class="lime accent-4 black--text">
+            {{ product.flash }}
+          </v-chip>
+          <v-chip v-if="product.if" class="cyan accent-4 black--text">
+            {{ product.if }}
+          </v-chip>
+          <v-chip v-for="factor in product.form_factor" :key="factor" class="orange accent-4 white--text">
+            {{ factor }}
+          </v-chip>
+        </v-chip-group>
       </v-list-item-content>
-      <v-chip-group
-        column
-      >
-        <v-chip v-if="product.flash" class="lime accent-4 black--text">
-          {{ product.flash }}
-        </v-chip>
-        <v-chip v-if="product.if" class="cyan accent-4 black--text">
-          {{ product.if }}
-        </v-chip>
-        <v-chip v-for="factor in product.form_factor" :key="factor" class="orange accent-4 white--text">
-          {{ factor }}
-        </v-chip>
-      </v-chip-group>
     </v-list-item>
   </v-list>
 </template>

@@ -70,6 +70,9 @@ export default {
       }
     }
   },
+  router: {
+    base: '/nvme-specs/'
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
