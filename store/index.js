@@ -1,3 +1,4 @@
+import specs from '~/static/specs_modified.json'
 import models from '~/static/models.json'
 
 function getModelsByCompany(models) {
@@ -13,6 +14,7 @@ function getModelsByCompany(models) {
 
 export const state = () => ({
   models,
+  specs,
   model_by_company: getModelsByCompany(models),
   counter: 0,
   search_result: []

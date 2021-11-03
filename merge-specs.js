@@ -3,12 +3,9 @@ const xbytes = require('xbytes');
 
 let specs = JSON.parse(fs.readFileSync('static/specs.json'));
 
-let models = {};
+
 
 for (const spec of specs) {
-    if (models[spec.model] == undefined) {
-        models[spec.model] = [];
-    }
     for (const key in spec) {
         if (spec[key] == undefined || spec[key] == '-----') {
             delete spec[key];
@@ -20,8 +17,8 @@ for (const spec of specs) {
         delete spec.seq;
     }
     if (spec.iops) {
-        spec.iops_read = parseInt(spec.iops.split('/')[0]) * 1000;
-        spec.iops_write = parseInt(spec.iops.split('/')[1]) * 1000;
+        spec.iops_read = parseInt(spec.iops.split('/')[0]);
+        spec.iops_write = parseInt(spec.iops.split('/')[1]);
         delete spec.iops;
     }
     if (spec.unraid) {
@@ -30,11 +27,6 @@ for (const spec of specs) {
     if (spec.form_factor) {
         spec.form_factor = spec.form_factor.split(" or ")
     }
-    if (spec.endurance) {
-        spec.endurance = xbytes.parseSize(spec.endurance.split('W')[0]);
-    }
-    spec.capacity = xbytes.parseSize(spec.capacity);
-    models[spec.model].push(spec);
 }
 
-fs.writeFileSync('static/models.json', JSON.stringify(models));
+fs.writeFileSync('static/specs_modified.json', JSON.stringify(specs));

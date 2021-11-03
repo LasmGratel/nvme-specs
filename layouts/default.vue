@@ -68,8 +68,13 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: '产品列表',
           to: '/'
+        },
+        {
+          icon: 'mdi-apps',
+          title: '产品对比',
+          to: '/compare'
         }
       ],
       miniVariant: false,
